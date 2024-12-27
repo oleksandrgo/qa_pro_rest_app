@@ -4,13 +4,13 @@ const app = express();
 app.use(express.urlencoded())
 app.use(express.json())
 
-// Получим всех супергероев
+// Отримаємо всіх супергероїв
 app.get('/characters', (req, res) => {
     // res.send("Get all")
     res.json(character)
 });
 
-// Получим супергероя по id
+// Отримає супергероя по id
 app.get('/character/:id', (req, res) => {
     const id = parseInt(req.params.id);
     const char = character.find(c => c.id === id);
@@ -22,7 +22,7 @@ app.get('/character/:id', (req, res) => {
     res.json(char);
 });
 
-// Создать супергероя
+// Створити супергероя
 app.post('/character', (req, res) => {
     if (!req.body.name || !req.body.age) {
         return res.status(400).json({ error: 'Name and age are required' });
@@ -38,7 +38,7 @@ app.post('/character', (req, res) => {
     res.status(201).json(newCharacter);
 });
 
-// Изменить супергероя
+// Змінити супергероя
 app.put('/character/:id', (req, res) => {
     const id = parseInt(req.params.id);
     const charIndex = character.findIndex(c => c.id === id);
@@ -57,7 +57,7 @@ app.put('/character/:id', (req, res) => {
     res.json(character[charIndex]);
 });
 
-// Удалить супергероя
+// Видалити супергероя
 app.delete('/character/:id', (req, res) => {
     const id = parseInt(req.params.id);
     const charIndex = character.findIndex(c => c.id === id);
