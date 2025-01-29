@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-deploy
+  labels:
+    app: my-app-deploy
+spec:
+  replicas: 5
+  template:
+    metadata:
+      name: my-app-deploy
+      labels:
+        app: my-app-deploy
+    spec:
+      containers:
+        - name: my-app-deploy
+          image: oleksandrgolubishko/qa_pro_rest_app
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3001
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: my-app-deploy

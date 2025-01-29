@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-app-deploy
+spec:
+  selector:
+    app: my-app-deploy
+  ports:
+    - port: 8888
+      targetPort: 3001
+  type: LoadBalancer
